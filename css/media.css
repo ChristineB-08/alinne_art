@@ -1,0 +1,423 @@
+/* Media Queries */
+@media (max-width: 1200px) {
+  .disegno-sul-vetro .disegno-flex {
+    margin: auto 3rem;
+  }
+  .disegno-sul-vetro h2 {
+    font-size: 3rem;
+  }
+  .disegno-sul-vetro p {
+    font-size: 1.5rem;
+  }
+
+  .personaggi h2 {
+    font-size: 3.5rem;
+  }
+
+  .personaggi p {
+    font-size: 1.6rem;
+  }
+
+  .swiper {
+    height: 500px;
+  }
+
+  .swiper .swiper-slide {
+    width: 200px;
+    height: 500px;
+  }
+
+  .segnalibri .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "img1 img2 img3"
+      "img4 img5 img6"
+      "img7 img8 img9"
+      "img10 img11 img12";
+    gap: 0.6rem;
+  }
+
+  .segnalibri-content h3 {
+    font-size: clamp(2rem, 3vw, 2.2rem);
+  }
+
+  .author-grid {
+    width: 960px;
+    min-height: 600px;
+    margin-left: 0.1rem;
+  }
+
+  .author-text-wrapper {
+    width: 80%;
+    height: auto;
+    margin-left: 2rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 992px) {
+  .navbar .logo {
+    width: 80px;
+    bottom: 5px;
+  }
+  .navbar i {
+    font-size: 2rem;
+    height: 80px;
+  }
+
+  .navbar button {
+    right: 0;
+  }
+
+  .navbar .main-menu-items {
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+  }
+
+  .navbar .main-menu-items a {
+    line-height: 4rem;
+  }
+
+  .hero {
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero p {
+    font-size: 1.4rem;
+  }
+
+  .disegno-sul-vetro .disegno-flex {
+    flex-direction: column;
+    margin: auto 1rem;
+  }
+
+  .disegno-sul-vetro .video-container {
+    margin: auto 4rem;
+  }
+
+  .disegno-sul-vetro .disegno-content {
+    text-align: center;
+    margin: auto 4rem;
+  }
+
+  .disegno-sul-vetro h2 {
+    font-size: 2.2rem;
+  }
+
+  .disegno-sul-vetro p {
+    font-size: 1.1rem;
+  }
+
+  .personaggi-content {
+    margin: 4rem;
+    padding: 3rem;
+  }
+
+  .segnalibri .grid-container {
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-areas:
+      "img1 img2 img3"
+      "img4 img5 img6"
+      "img7 img8 img9"
+      "img10 img11 img12";
+    gap: 0.6rem;
+  }
+
+  .segnalibri-content h3 {
+    font-size: clamp(1.8rem, 2.5vw, 2rem);
+  }
+
+  .author {
+    margin-right: 5rem;
+    padding-right: 5rem;
+  }
+
+  .particle {
+    font-size: 3.5rem;
+  }
+
+  .author-grid {
+    width: 100%;
+    min-height: 700px;
+    flex-direction: column;
+  }
+  .author-text-wrapper {
+    height: auto;
+    width: 80%;
+    bottom: 90px;
+  }
+  .text-particle-container {
+    font-size: 1.8rem;
+  }
+
+  .footer-links {
+    margin-right: 4.6rem;
+  }
+
+  .film-strip img {
+    width: 200px;
+    height: 250px;
+  }
+
+  .film-container {
+    padding: 20px 0;
+  }
+
+  .film-container::before,
+  .film-container::after {
+    height: 12px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 15px,
+      white 15px,
+      white 18px,
+      transparent 18px
+    );
+  }
+
+  .contact-form {
+    margin: 2.8rem;
+  }
+
+  .inner-header h1 {
+    margin-left: 2rem;
+  }
+
+  .footer-right {
+    padding-right: 0;
+  }
+}
+@media (max-width: 768px) {
+  .mobile-menu-toggle {
+    display: block;
+  }
+
+  .navbar-icons-flex {
+    gap: 3.5rem;
+  }
+
+  .disegno-sul-vetro .video-container {
+    margin: auto 2rem;
+  }
+
+  .disegno-sul-vetro .disegno-content {
+    margin: auto 2rem;
+  }
+
+  .personaggi-content {
+    margin: auto 4rem;
+    padding: 0 3rem;
+  }
+  .personaggi h2 {
+    font-size: 2rem;
+  }
+
+  .personaggi p {
+    font-size: 1.4rem;
+  }
+
+  .swiper {
+    height: 400px;
+    margin-bottom: auto 2rem;
+  }
+
+  .swiper .swiper-slide {
+    height: 400px;
+  }
+
+  .segnalibri-content h3 {
+    left: -15%;
+    font-size: 1rem;
+    animation-duration: 6s;
+  }
+
+  .grid-container {
+    margin-left: 25%;
+  }
+
+  .segnalibri .grid-container {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-areas:
+      "img1 img2"
+      "img3 img4"
+      "img5 img6"
+      "img7 img8"
+      "img9 img10"
+      "img11 img12";
+  }
+
+  .segnalibri-content h3 {
+    font-size: clamp(2.1rem, 3vw, 2.4rem);
+  }
+
+  .author-grid {
+    min-height: 500px;
+  }
+
+  .author-text-wrapper {
+    background: rgba(0, 0, 0, 0.3);
+    width: 73%;
+    bottom: 900px;
+  }
+
+  .footer-container {
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  .footer-links {
+    margin-right: 0;
+  }
+
+  .footer-bottom {
+    margin-bottom: 1rem;
+  }
+
+  .film-strip img {
+    width: 150px;
+    height: 200px;
+  }
+
+  .film-container {
+    padding: 15px 0;
+  }
+
+  .film-container::before,
+  .film-container::after {
+    height: 10px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 12px,
+      white 12px,
+      white 15px,
+      transparent 15px
+    );
+  }
+
+  .inner-header h1 {
+    margin-left: -2rem;
+    font-size: 2.6rem;
+    text-align: center;
+  }
+
+  .contact-form-text p {
+    text-align: center;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1.4rem;
+  }
+
+  .contact-form .btn {
+    font-size: 1.2rem;
+  }
+}
+
+@media (max-width: 576px) {
+  .hero-content {
+    left: 0;
+    margin-right: 1.5rem;
+  }
+
+  .disegno-sul-vetro .video-container {
+    margin: 0 2rem;
+  }
+
+  .disegno-sul-vetro video {
+    height: 500px;
+  }
+
+  .disegno-sul-vetro .disegno-content {
+    margin: 1rem 2rem;
+  }
+
+  .personaggi-content {
+    margin: auto 3rem;
+    padding: 0 2rem;
+  }
+
+  .segnalibri .grid-container {
+    grid-template-columns: repeat(1, 1fr);
+    grid-template-areas:
+      "img1"
+      "img2"
+      "img3"
+      "img4"
+      "img5"
+      "img6"
+      "img7"
+      "img8"
+      "img9"
+      "img10"
+      "img11"
+      "img12";
+  }
+
+  .segnalibri-content h3 {
+    font-size: clamp(1.6rem, 2.4vw, 1.8rem);
+  }
+
+  .particle {
+    font-size: 3rem;
+  }
+
+  .author-text-wrapper {
+    padding-top: 1.5rem;
+    height: auto;
+    width: 65.5%;
+    bottom: 560px;
+  }
+
+  .text-particle-container {
+    font-size: 1.2rem;
+  }
+
+  .film-strip img {
+    width: 120px;
+    height: 160px;
+  }
+
+  .film-container {
+    padding: 10px 0;
+  }
+
+  .film-container::before,
+  .film-container::after {
+    height: 8px;
+    background: repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 10px,
+      white 10px,
+      white 12px,
+      transparent 12px
+    );
+  }
+
+  .inner-header h1 {
+    font-size: 2.2rem;
+  }
+
+  .contact-form p {
+    font-size: 0.9rem;
+    margin-left: -0.6rem;
+  }
+
+  .contact-form input,
+  .contact-form textarea {
+    font-size: 1rem;
+  }
+
+  .contact-form .btn {
+    font-size: 1.2rem;
+  }
+}
