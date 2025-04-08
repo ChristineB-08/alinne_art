@@ -146,8 +146,8 @@
     flex-direction: column;
   }
   .author-text-wrapper {
+    margin-left: 0;
     height: auto;
-    width: 80%;
     bottom: 90px;
   }
   .text-particle-container {
@@ -329,19 +329,19 @@
   }
 
   .disegno-sul-vetro .video-container {
-    margin: 0 2rem;
+    margin: 0 1.2rem 0 0;
   }
 
   .disegno-sul-vetro video {
-    height: 500px;
+    height: 400px;
   }
 
   .disegno-sul-vetro .disegno-content {
-    margin: 1rem 2rem;
+    margin: 0 1.2rem 1rem 0;
   }
 
   .personaggi-content {
-    margin: auto 3rem;
+    margin: 0 1.5rem 0 0;
     padding: 0 2rem;
   }
 
@@ -362,23 +362,32 @@
       "img12";
   }
 
+  .segnalibri .item {
+    min-height: 240px;
+    min-width: 140px;
+  }
+
   .segnalibri-content h3 {
-    font-size: clamp(1.6rem, 2.4vw, 1.8rem);
+    font-size: clamp(1.4rem, 2vw, 1.6rem);
   }
 
   .particle {
     font-size: 3rem;
   }
 
+  .author-grid {
+    min-height: 700px;
+    min-width: 250px;
+  }
+
   .author-text-wrapper {
-    padding-top: 1.5rem;
-    height: auto;
-    width: 65.5%;
-    bottom: 560px;
+    height: 450px;
+    width: 60%;
+    bottom: 340px;
   }
 
   .text-particle-container {
-    font-size: 1.2rem;
+    font-size: 0.8rem;
   }
 
   .film-strip img {

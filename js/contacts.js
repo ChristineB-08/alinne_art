@@ -25,6 +25,62 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   });
 
+  // Hide Logo on Scroll
+document.addEventListener('DOMContentLoaded', function () {
+  const logo = document.querySelector('.navbar .logo');
+  const footer = document.querySelector('footer');
+  
+  if (!logo || !footer) return;
+
+  let lastScrollTop = 0;
+  const hideThreshold = 50;
+  const scaleThreshold = 200;
+
+  function updateLogo() {
+    const viewportWidth = window.innerWidth;
+    if (viewportWidth <= 576) {
+      logo.style.opacity = '0';
+      logo.style.pointerEvents = 'none';
+      return; 
+    }
+
+    const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+    const footerRect = footer.getBoundingClientRect();
+    const logoRect = logo.getBoundingClientRect();
+
+    const scrollingDown = scrollTop > lastScrollTop;
+    const scrollingUp = scrollTop < lastScrollTop;
+
+    const distanceToFooter = footerRect.top - logoRect.bottom;
+    let scale = 1;
+    
+    if (distanceToFooter < scaleThreshold) {
+      scale = Math.max(0.4, distanceToFooter / scaleThreshold);
+    }
+
+    if ((scrollingDown || scrollingUp) && scrollTop > hideThreshold) {
+      logo.style.opacity = '0';
+      logo.style.pointerEvents = 'none';
+    } else {
+      logo.style.opacity = '1';
+      logo.style.pointerEvents = 'auto';
+    }
+
+    logo.style.transform = `scale(${scale}) translateY(${(1 - scale) * 30}px)`;
+
+    if (distanceToFooter < 50) {
+      logo.style.opacity = '0';
+      logo.style.pointerEvents = 'none';
+    }
+
+    lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+  }
+
+  window.addEventListener('scroll', updateLogo);
+  window.addEventListener('resize', updateLogo);
+  updateLogo();
+});
+
 //Contacts
 document.addEventListener('DOMContentLoaded', () => {
     const filmContainer = document.querySelector('.film-container');

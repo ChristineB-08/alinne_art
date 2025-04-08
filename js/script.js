@@ -37,6 +37,13 @@ document.addEventListener('DOMContentLoaded', function () {
   const scaleThreshold = 200;
 
   function updateLogo() {
+    const viewportWidth = window.innerWidth;
+    if (viewportWidth <= 576) {
+      logo.style.opacity = '0';
+      logo.style.pointerEvents = 'none';
+      return; 
+    }
+
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
     const footerRect = footer.getBoundingClientRect();
     const logoRect = logo.getBoundingClientRect();
@@ -71,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
   window.addEventListener('scroll', updateLogo);
   window.addEventListener('resize', updateLogo);
-  updateLogo(); 
+  updateLogo();
 });
 
 // Swiper
