@@ -381,9 +381,10 @@
   }
 
   .author-text-wrapper {
+    margin: 0 1rem 0 0;
     height: auto;
-    width: 64%;
-    bottom: 390px;
+    width: 65%;
+    bottom: 400px;
   }
 
   .text-particle-container {
