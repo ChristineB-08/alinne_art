@@ -50,8 +50,8 @@
   .author-text-wrapper {
     width: 80%;
     height: auto;
-    margin-left: 2rem;
-    padding: 2rem;
+    padding-left: 1rem;
+    margin-left: 0.1rem;
   }
 }
 
@@ -260,8 +260,8 @@
   }
 
   .author-text-wrapper {
+    width: 70%;
     background: rgba(0, 0, 0, 0.3);
-    width: 73%;
     bottom: 900px;
   }
 
@@ -376,14 +376,16 @@
   }
 
   .author-grid {
+    margin-left: 1.5rem;
     min-height: 700px;
     min-width: 250px;
   }
 
   .author-text-wrapper {
-    height: 450px;
+    height: auto;
+    margin-left: 1.5rem;
     width: 60%;
-    bottom: 340px;
+    bottom: 390px;
   }
 
   .text-particle-container {

@@ -464,9 +464,10 @@ section {
 .author-grid {
   position: relative;
   display: flex;
-  width: 1300px;
+  width: 100%;
+  max-width: 1300px;
   min-height: 800px;
-  margin-left: -2.5rem;
+  margin: 0 auto;
   overflow: hidden;
 }
 
@@ -482,12 +483,11 @@ section {
 
 .author-text-wrapper {
   position: absolute;
+  padding-left: 4rem;
   bottom: 80px;
-  width: 100%;
   height: 80px;
   background: rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  margin-left: -2.5rem;
   z-index: 2;
 }
 
