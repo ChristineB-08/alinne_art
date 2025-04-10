@@ -376,15 +376,13 @@
   }
 
   .author-grid {
-    margin-left: 1.5rem;
     min-height: 700px;
     min-width: 250px;
   }
 
   .author-text-wrapper {
     height: auto;
-    margin-left: 1.5rem;
-    width: 60%;
+    width: 64%;
     bottom: 390px;
   }
 
