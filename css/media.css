@@ -382,11 +382,11 @@
   }
 
   .author-text-wrapper {
-    height: 300px;
+    height: 340px;
     padding-top: 2rem;
     width: 68%;
-    left: 3rem;
-    bottom: 490px;
+    left: 3.5rem;
+    bottom: 500px;
   }
 
   .text-particle-container {
