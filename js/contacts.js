@@ -81,70 +81,72 @@ document.addEventListener('DOMContentLoaded', function () {
   updateLogo();
 });
 
-//Film strip
+//Film Strip
 document.addEventListener('DOMContentLoaded', () => {
   const filmContainer = document.querySelector('.film-container');
   const filmStrip = document.querySelector('.film-strip');
-
+  
   if (!filmStrip) return;
 
-  const originalContent = filmStrip.innerHTML;
-  filmStrip.innerHTML = originalContent + originalContent;
+  const originalChildren = Array.from(filmStrip.children);
+  
+  const cloneChildren = () => {
+      originalChildren.forEach(child => {
+          filmStrip.appendChild(child.cloneNode(true));
+      });
+  };
+  cloneChildren();
 
   let position = 0;
   let animationId = null;
-  const baseSpeed = 0.1; 
-  let lastTime = performance.now();
+  const baseSpeed = 0.08;
+  let lastTime = Date.now();
+  let resetThreshold = filmStrip.scrollWidth / 2;
 
-  const getResponsiveSpeed = () => {
-    const screenWidth = window.innerWidth;
-    if (screenWidth < 576) return baseSpeed * 0.5;
-    if (screenWidth < 768) return baseSpeed * 0.75;
-    return baseSpeed; 
+  const animate = () => {
+      const currentTime = Date.now();
+      let deltaTime = currentTime - lastTime;
+      lastTime = currentTime;
+
+      deltaTime = Math.min(deltaTime, 100);
+
+      const speed = window.innerWidth < 768 ? baseSpeed * 0.8 : baseSpeed;
+      position += speed * deltaTime;
+      
+      if (position >= resetThreshold) {
+          position = 0;
+      }
+
+      filmStrip.style.transform = `translateX(-${position}px)`;
+      animationId = requestAnimationFrame(animate);
   };
 
-  let speed = getResponsiveSpeed();
-  const resetThreshold = filmStrip.scrollWidth / 2;
-
-  const animate = (currentTime) => {
-    const deltaTime = currentTime - lastTime;
-    lastTime = currentTime;
-
-    const cappedDelta = Math.min(deltaTime, 50);
-
-    position += speed * cappedDelta;
-
-    if (position >= resetThreshold) {
-      position = 0;
-    }
-
-    filmStrip.style.transform = `translateX(-${position}px)`;
-    animationId = requestAnimationFrame(animate);
-  };
-
-  animationId = requestAnimationFrame(animate);
+  animate();
 
   filmContainer.addEventListener('mouseenter', () => {
-    cancelAnimationFrame(animationId);
+      cancelAnimationFrame(animationId);
   });
 
   filmContainer.addEventListener('mouseleave', () => {
-    lastTime = performance.now();
-    animationId = requestAnimationFrame(animate);
+      lastTime = Date.now();
+      animate();
   });
 
   let resizeTimeout;
   window.addEventListener('resize', () => {
-    cancelAnimationFrame(animationId);
-    filmStrip.style.transform = 'translateX(0)';
-    position = 0;
-    clearTimeout(resizeTimeout);
+      cancelAnimationFrame(animationId);
+      filmStrip.style.transform = 'translateX(0)';
+      position = 0;
 
-    resizeTimeout = setTimeout(() => {
-      filmStrip.innerHTML = originalContent + originalContent;
-      speed = getResponsiveSpeed();
-      lastTime = performance.now();
-      animationId = requestAnimationFrame(animate);
-    }, 100);
+      filmStrip.innerHTML = '';
+      
+      originalChildren.forEach(child => filmStrip.appendChild(child));
+      
+      clearTimeout(resizeTimeout);
+      resizeTimeout = setTimeout(() => {
+          cloneChildren();
+          resetThreshold = filmStrip.scrollWidth / 2;
+          animate();
+      }, 150);
   });
 });

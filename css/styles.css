@@ -572,7 +572,6 @@ section {
   margin-left: 2rem;
 }
 
-
 /* Contacts */
 .film-container {
   position: relative;
@@ -611,6 +610,8 @@ section {
   gap: 0.7rem;
   width: max-content;
   position: relative;
+  will-change: transform;
+  transform: translateZ(0);
 }
 
 .film-strip img {
