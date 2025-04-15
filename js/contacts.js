@@ -81,58 +81,70 @@ document.addEventListener('DOMContentLoaded', function () {
   updateLogo();
 });
 
-//Contacts
+//Film strip
 document.addEventListener('DOMContentLoaded', () => {
-    const filmContainer = document.querySelector('.film-container');
-    const filmStrip = document.querySelector('.film-strip');
-    
-    if (!filmStrip) return;
-  
-    const originalContent = filmStrip.innerHTML;
-    filmStrip.innerHTML = originalContent + originalContent;
-  
-    let position = 0;
-    let animationId = null;
-    const speed = 0.1;
-    let lastTime = Date.now();
-  
-    const resetThreshold = filmStrip.scrollWidth / 2;
-  
-    const animate = () => {
-      const currentTime = Date.now();
-      const deltaTime = currentTime - lastTime;
-      lastTime = currentTime;
-  
-      position += speed * deltaTime;
-      
-      if (position >= resetThreshold) {
-        position = 0;
-      }
-  
-      filmStrip.style.transform = `translateX(-${position}px)`;
-      animationId = requestAnimationFrame(animate);
-    };
-  
-    animate();
-  
-    filmContainer.addEventListener('mouseenter', () => {
-      cancelAnimationFrame(animationId);
-    });
-  
-    filmContainer.addEventListener('mouseleave', () => {
-      lastTime = Date.now();
-      animate();
-    });
-  
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-      cancelAnimationFrame(animationId);
-      filmStrip.style.transform = 'translateX(0)';
+  const filmContainer = document.querySelector('.film-container');
+  const filmStrip = document.querySelector('.film-strip');
+
+  if (!filmStrip) return;
+
+  const originalContent = filmStrip.innerHTML;
+  filmStrip.innerHTML = originalContent + originalContent;
+
+  let position = 0;
+  let animationId = null;
+  const baseSpeed = 0.1; 
+  let lastTime = performance.now();
+
+  const getResponsiveSpeed = () => {
+    const screenWidth = window.innerWidth;
+    if (screenWidth < 576) return baseSpeed * 0.5;
+    if (screenWidth < 768) return baseSpeed * 0.75;
+    return baseSpeed; 
+  };
+
+  let speed = getResponsiveSpeed();
+  const resetThreshold = filmStrip.scrollWidth / 2;
+
+  const animate = (currentTime) => {
+    const deltaTime = currentTime - lastTime;
+    lastTime = currentTime;
+
+    const cappedDelta = Math.min(deltaTime, 50);
+
+    position += speed * cappedDelta;
+
+    if (position >= resetThreshold) {
       position = 0;
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        filmStrip.innerHTML = originalContent + originalContent;
-        animate();
-      }, 100);
-    });
+    }
+
+    filmStrip.style.transform = `translateX(-${position}px)`;
+    animationId = requestAnimationFrame(animate);
+  };
+
+  animationId = requestAnimationFrame(animate);
+
+  filmContainer.addEventListener('mouseenter', () => {
+    cancelAnimationFrame(animationId);
   });
+
+  filmContainer.addEventListener('mouseleave', () => {
+    lastTime = performance.now();
+    animationId = requestAnimationFrame(animate);
+  });
+
+  let resizeTimeout;
+  window.addEventListener('resize', () => {
+    cancelAnimationFrame(animationId);
+    filmStrip.style.transform = 'translateX(0)';
+    position = 0;
+    clearTimeout(resizeTimeout);
+
+    resizeTimeout = setTimeout(() => {
+      filmStrip.innerHTML = originalContent + originalContent;
+      speed = getResponsiveSpeed();
+      lastTime = performance.now();
+      animationId = requestAnimationFrame(animate);
+    }, 100);
+  });
+});
